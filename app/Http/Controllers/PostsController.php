@@ -14,4 +14,10 @@ class PostsController extends Controller {
         ]);
         return redirect('/home');
     }
+    public function index()
+    {
+        return view('home', [
+            'posts' => auth()->user()->timeline()
+        ]);
+    }
 }

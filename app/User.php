@@ -42,7 +42,14 @@ class User extends Authenticatable
     }
     // Retrieve Timeline for the current user
     public function timeline() {
-        return Post::where('user_id', $this->id)->latest()->get();
+       // Include all the user's posts
+       $ids = $this->follows()->pluck('id');
+       $ids->push($this->id);
+       // And the posts from the people that he/she follows
+       return Post::whereIn('user_id', $ids)->latest()->get();
+    }
+    public function posts() {
+        return $this->hasMany(Post::class);
     }
     // Function to be called to follow the user passed to the function
     public function follow(User $user) {

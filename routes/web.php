@@ -18,9 +18,11 @@ Route::get('/', function () {
 });
 
 // ** POSTS **
-// Add a post to Database
-Route::post('/posts', 'PostsController@store');
-// ** END POSTS **
+Route::middleware('auth')->group(function() {
+    Route::get('/posts', 'PostsController@index')->name('home');
+    // Add a post to Database
+    Route::post('/posts', 'PostsController@store');
+    // ** END POSTS **
+});
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
