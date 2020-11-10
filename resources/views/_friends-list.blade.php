@@ -8,7 +8,7 @@
                 alt="avatar-of-friend-in-list"
                 class="rounded-full mr-2" 
             />
-            Placeholder Friend
+            {{ $user->name }}
         </div>
     </li>
     @endforeach

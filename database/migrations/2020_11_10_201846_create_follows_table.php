@@ -21,7 +21,7 @@ class CreateFollowsTable extends Migration
 
             $table->foreign('user_id')
                 ->references('id')
-                ->on('user')
+                ->on('users')
                 ->onDelete('cascade');
             $table->foreign('following_user_id')
                 ->references('id')

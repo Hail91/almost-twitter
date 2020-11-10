@@ -27,7 +27,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
     /**
      * The attributes that should be cast to native types.
      *
@@ -45,8 +44,12 @@ class User extends Authenticatable
     public function timeline() {
         return Post::where('user_id', $this->id)->latest()->get();
     }
+    // Function to be called to follow the user passed to the function
+    public function follow(User $user) {
+        return $this->follows()->save($user);
+    }
     // Retrieve a list of people the user is following
     public function follows() {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'follows', 'user_id', 'following_user_id');
     }
 }
