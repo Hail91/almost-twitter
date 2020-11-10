@@ -8,7 +8,7 @@
         <div class="lg:flex-1 lg:mx-10" style="max-width: 700px"> 
             @include('_publish-post-panel')
             <div class="border border-gray-300 rounded-lg">
-                @foreach(range(1, 4) as $post)
+                @foreach($posts as $post)
                     @include('_single-post')
                 @endforeach
             </div>     

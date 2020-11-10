@@ -36,4 +36,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Getter
+    public function getAvatarAttribute() {
+        return "https://i.pravatar.cc/40?u=" . $this->email;
+    }
+    // Retrieve Timeline for the current user
+    public function timeline() {
+        return Post::where('user_id', $this->id)->latest()->get();
+    }
+    // Retrieve a list of people the user is following
+    public function follows() {
+        return $this->belongsToMany(User::class);
+    }
 }

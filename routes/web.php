@@ -12,11 +12,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Base Route
 Route::get('/', function () {
     return view('welcome');
 });
 
+// ** POSTS **
+// Add a post to Database
+Route::post('/posts', 'PostsController@store');
+// ** END POSTS **
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
