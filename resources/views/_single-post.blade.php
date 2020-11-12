@@ -7,6 +7,8 @@
             src="{{ $post->user->avatar }}"
             alt="avatar-of-friend-in-list"
             class="rounded-full mr-2" 
+            width="50"
+            height="50"
             />
         </a>
     </div>

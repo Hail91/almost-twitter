@@ -38,7 +38,7 @@ class User extends Authenticatable
 
     // Getter
     public function getAvatarAttribute() {
-        return "https://i.pravatar.cc/40?u=" . $this->email;
+        return "https://i.pravatar.cc/200?u=" . $this->email;
     }
     // Retrieve Timeline for the current user
     public function timeline() {
