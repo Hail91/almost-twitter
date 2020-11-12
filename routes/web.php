@@ -24,5 +24,10 @@ Route::middleware('auth')->group(function() {
     Route::post('/posts', 'PostsController@store');
     // ** END POSTS **
 });
+
+// ** PROFILE ROUTES **
+Route::get('/profile/{user}', 'ProfilesController@show')->name('show');
+// ** END PROFILE **
+// Auth Routes 
 Auth::routes();
 
