@@ -28,10 +28,11 @@
                         style="height: 5%; width: 5%"
                         src="/images/logo.svg"
                         alt="almost-twitter-logo"
-                    />
+                    >
                 </h1>
             </header>
         </section>
+        
         {{ $slot }}
     </div>
 </body>

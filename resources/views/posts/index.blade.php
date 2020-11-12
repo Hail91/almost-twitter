@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@component('components.app')
+    <div>
+        @include('_publish-post-panel')
 
-@section('content')
-    @include('_publish-post-panel')
-    @include('_timeline') 
-@endsection
+        @include('_timeline') 
+    </div>
+@endcomponent

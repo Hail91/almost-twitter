@@ -1,5 +1,5 @@
 @component('components.master')
-<div class="container mx-auto px-6 py-4 bg-gray-400">
+<div class="container mx-auto px-6 py-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

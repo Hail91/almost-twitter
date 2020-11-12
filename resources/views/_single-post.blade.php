@@ -4,12 +4,12 @@
     <div class="mr-2 flex-shrink-0">
         <a href={{ route('show', $post->user) }}>
             <img
-            src="{{ $post->user->avatar }}"
-            alt="avatar-of-friend-in-list"
-            class="rounded-full mr-2" 
-            width="50"
-            height="50"
-            />
+                src="{{ $post->user->avatar }}"
+                alt="avatar-of-friend-in-list"
+                class="rounded-full mr-2" 
+                width="50"
+                height="50"
+            >
         </a>
     </div>
     <!-- Post itself in this column -->
