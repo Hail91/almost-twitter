@@ -1,5 +1,5 @@
 <!-- container to hold posts -->
-<div class="flex p-4 border-b border-b-gray-400">
+<div class="flex p-4 border-b border-b-gray-300">
      <!-- Avatar in this column -->
     <div class="mr-2 flex-shrink-0">
         <a href={{ route('show', $post->user) }}>
