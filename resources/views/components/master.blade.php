@@ -28,15 +28,12 @@
                         style="height: 5%; width: 5%"
                         src="/images/logo.svg"
                         alt="almost-twitter-logo"
-                    />
+                    >
                 </h1>
             </header>
         </section>
-        <section class="px-8">
-            <main class="container mx-auto">
-                @yield('content')
-            </main>
-        </section>
+        
+        {{ $slot }}
     </div>
 </body>
 </html>
