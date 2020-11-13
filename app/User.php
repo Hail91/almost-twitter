@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    // Traits
     use Notifiable;
 
     /**
@@ -46,21 +47,36 @@ class User extends Authenticatable
        $ids = $this->follows()->pluck('id');
        $ids->push($this->id);
        // And the posts from the people that he/she follows
-       return Post::whereIn('user_id', $ids)->latest()->get();
+       return Post::whereIn('user_id', $ids)
+       ->latest()
+       ->get();
     }
     public function posts() {
         return $this->hasMany(Post::class);
     }
     // Function to be called to follow the user passed to the function
     public function follow(User $user) {
-        return $this->follows()->save($user);
+        return $this->follows()
+        ->save($user);
     }
     // Retrieve a list of people the user is following
     public function follows() {
         return $this->belongsToMany(User::class, 'follows', 'user_id', 'following_user_id');
     }
-    // Override how Laravel grabs the User wildcard by default
-    public function getRouteKeyName() {
-        return 'name';
+    // Function to check if the current user is following anyone
+    public function isFollowing(User $user) {
+        /* This works, but it will return an ENTIRE collection, this can work for smaller datasets
+        But this would become highly inefficient when we are dealing with MANY users. */
+        // return $this->follows->containers($user);
+        // -------------------------------------------------------------------------------------------
+        // Below is more efficient as we utilize a 'where' clause to target the specific user to check.
+        return $this->follows() // Return who this user follows
+        ->where('following_user_id', $user->id) // Where the ID's match
+        ->exists(); // And it exists
+    }
+    // Function to Remove follow relationship
+    public function unFollow(User $user) {
+        // Find the user we are following and detach the relationship (detach)
+        return $this->follows()->detach($user);
     }
 }
