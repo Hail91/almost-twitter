@@ -17,7 +17,7 @@
         <div class="flex justify-between items-center mb-6">
             <div>
                 <h2 class="font-bold text-2xl mb-2">{{ $user->name }}</h2>
-                <p>Joined {{ $user->created_at->diffForHumans() }}</p>
+                <p class="font-thin text-gray-600">Joined {{\Carbon\Carbon::parse($user->created_at)->format('F Y')}}</p>
             </div>
             <div class="flex">
                 <a href="" class="mr-4 transition duration-300 ease-in-out bg-blue-400 hover:bg-blue-500 rounded-full shadow py-2 px-2 text-white text-s">Edit Profile</a>
