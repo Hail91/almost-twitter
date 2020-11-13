@@ -52,7 +52,7 @@ class User extends Authenticatable
        ->get();
     }
     public function posts() {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class)->latest();
     }
     // Function to be called to follow the user passed to the function
     public function follow(User $user) {

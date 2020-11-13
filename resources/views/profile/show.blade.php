@@ -1,6 +1,6 @@
 @component('components.app')
     <header class="mb-6 relative">
-        <div>
+        <div class="relative">
             <img
                 class="mb-2 h-40 w-full object-cover rounded-lg"
                 src="https://source.unsplash.com/random"
@@ -9,8 +9,9 @@
             <img 
                 src="{{ $user->avatar }}"
                 alt="Hello"
-                class="rounded-full mr-2 absolute"
-                style="width: 150px; left: calc(50% - 75px); top: 30%;"
+                class="rounded-full mr-2 absolute bottom-0 transform translate-x-1/2 translate-y-1/2"
+                style="left: 30%"
+                width="150"
             >   
         </div>
         <div class="flex justify-between items-center mb-6">
