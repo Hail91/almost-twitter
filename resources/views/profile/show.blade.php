@@ -19,8 +19,8 @@
                 <h2 class="font-bold text-2xl mb-2">{{ $user->name }}</h2>
                 <p class="font-thin text-gray-600">Joined {{\Carbon\Carbon::parse($user->created_at)->format('F Y')}}</p>
             </div>
+            @if(auth()->user()->name !== $user->name)
             <div class="flex">
-                <a href="" class="mr-4 transition duration-300 ease-in-out bg-blue-400 hover:bg-blue-500 rounded-full shadow py-2 px-2 text-white text-s">Edit Profile</a>
                 @if(auth()->user()->isFollowing($user))
                 <form method="POST" action="/profile/{{ $user->name }}/unfollow">
                 @csrf
@@ -42,6 +42,9 @@
                 </form>
                 @endif
              </div>
+            @else
+            <a href="" class="mr-4 rounded-full shadow py-2 px-2 text-blue-500 text-s border border-blue-500">Edit Profile</a>
+            @endif
         </div>
     <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
     tempor incididunt ut labore et dolore magna aliqua. Ac tortor dignissim 
