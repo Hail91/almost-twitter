@@ -15,9 +15,16 @@
     <!-- Post itself in this column -->
     <div>
         <h5 class="font-bold mb-4">
-            <a href={{ route('show', $post->user) }}>
-                {{ $post->user->name }}
-            </a>
+            <div>
+                <a href={{ route('show', $post->user) }}>
+                    {{ $post->user->name }}
+                </a>
+                @if(strpos($post->created_at->diffForHumans(), 'day') !== false)
+                <span class="ml-1 text-sm font-thin text-gray-600">{{\Carbon\Carbon::parse($post->created_at)->format('M d')}}</span>
+                @else
+                <span class="ml-1 text-sm font-thin text-gray-600">{{$post->created_at->diffForHumans()}}</span>
+                @endif
+            </div>
         </h5>
         <p class="text-sm">{{ $post->body }}</p>
     </div>
