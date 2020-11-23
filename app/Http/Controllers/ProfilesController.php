@@ -12,7 +12,10 @@ class ProfilesController extends Controller
         return view('profile.show', compact('user'));
     }
     // Edit Profile Page
-    public function edit() {
-
+    public function edit(User $user) {
+        // Reject ability for user to edit profiles that are not the auth'd user
+        abort_if($user->isNot(auth()->user()), 403);
+        // Otherwise return the edit page
+        return view('profile.edit', compact('user'));
     }
 }

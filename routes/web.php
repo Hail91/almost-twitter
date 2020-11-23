@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function() {
     Route::post('/posts', 'PostsController@store');
     Route::post('/profile/{user:name}/follow', 'FollowsController@store');
     Route::delete('/profile/{user:name}/unfollow', 'FollowsController@destroy');
-    Route::get('/profiles/${user:name}/edit', 'ProfilesController@edit');
+    Route::get('/profile/{user:name}/edit', 'ProfilesController@edit');
 });
 
 // ** NON AUTH PROFILE ROUTES **
