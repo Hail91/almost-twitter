@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     // Getter
     public function getAvatarAttribute($value) {
-        return asset('storage/' . $value);
+        return asset($value ? 'storage/' . $value : '/images/default-avatar.png');
     }
     // Retrieve Timeline for the current user
     public function timeline() {
@@ -85,5 +85,9 @@ class User extends Authenticatable
         $path = route('show', $this->username);
         // If an append argument is received, return the path with the append added, otherwise, return the default path.
         return $append ? "{$path}/${append}" : $path;
+    }
+    // Method to hash password when user updates their profile password
+    public function setPasswordAttribute($value) {
+        $this->attributes['password'] = bcrypt($value);
     }
 }

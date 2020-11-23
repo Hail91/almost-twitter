@@ -24,11 +24,10 @@ Route::middleware('auth')->group(function() {
     Route::delete('/profile/{user:username}/unfollow', 'FollowsController@destroy');
     Route::get('/profile/{user:username}/edit', 'ProfilesController@edit');
     Route::put('/profile/{user:username}', 'ProfilesController@update');
+    Route::get('/explore', 'ExploreController@index');
 });
 
-// ** NON AUTH PROFILE ROUTES **
 Route::get('/profile/{user:username}', 'ProfilesController@show')->name('show');
-// ** END NON AUTH PROFILE **
-// Auth Routes
+
 Auth::routes();
 

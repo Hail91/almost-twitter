@@ -22,7 +22,7 @@
             @if(auth()->user()->name !== $user->name)
             <div class="flex">
                 @if(auth()->user()->isFollowing($user))
-                <form method="POST" action="/profile/{{ $user->name }}/unfollow">
+                <form method="POST" action="/profile/{{ $user->username }}/unfollow">
                 @csrf
                 @method('DELETE')
                     <button
@@ -32,7 +32,7 @@
                     </button>
                 </form>
                 @else
-                <form method="POST" action="/profile/{{ $user->name }}/follow">
+                <form method="POST" action="/profile/{{ $user->username }}/follow">
                 @csrf
                     <button
                         type="submit"
