@@ -1,5 +1,7 @@
 <div class="border border-gray-100 rounded-lg">
-    @foreach($posts as $post)
+    @forelse($posts as $post)
         @include('_single-post')
-    @endforeach
-</div> 
+        @empty
+            <p class="p-4">No posts yet!</p>
+    @endforelse
+</div>

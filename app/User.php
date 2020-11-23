@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'name', 'email', 'password', 'avatar'
     ];
 
     /**
@@ -38,8 +38,8 @@ class User extends Authenticatable
     ];
 
     // Getter
-    public function getAvatarAttribute() {
-        return "https://i.pravatar.cc/200?u=" . $this->email;
+    public function getAvatarAttribute($value) {
+        return asset($value ? 'storage/' . $value : '/images/default-avatar.png');
     }
     // Retrieve Timeline for the current user
     public function timeline() {
@@ -78,5 +78,16 @@ class User extends Authenticatable
     public function unFollow(User $user) {
         // Find the user we are following and detach the relationship (detach)
         return $this->follows()->detach($user);
+    }
+    // Path method to specify where we want to direct to on User
+    public function path($append = '') {
+        // Default path to user's profile
+        $path = route('show', $this->username);
+        // If an append argument is received, return the path with the append added, otherwise, return the default path.
+        return $append ? "{$path}/${append}" : $path;
+    }
+    // Method to hash password when user updates their profile password
+    public function setPasswordAttribute($value) {
+        $this->attributes['password'] = bcrypt($value);
     }
 }

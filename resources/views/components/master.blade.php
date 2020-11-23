@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://kit.fontawesome.com/b8bd7a33d0.js" crossorigin="anonymous"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -32,7 +33,7 @@
                 </h1>
             </header>
         </section>
-        
+
         {{ $slot }}
     </div>
 </body>

@@ -6,8 +6,9 @@
             <img
                 src="{{ $post->user->avatar }}"
                 alt="avatar-of-friend-in-list"
-                class="rounded-full mr-2" 
+                class="rounded-full mr-2"
                 width="50"
+                style="height: 3.3rem"
                 height="50"
             >
         </a>

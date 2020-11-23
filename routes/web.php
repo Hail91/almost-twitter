@@ -17,22 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// ** AUTH POSTS **
 Route::middleware('auth')->group(function() {
     Route::get('/posts', 'PostsController@index')->name('home');
-    // Add a post to Database
     Route::post('/posts', 'PostsController@store');
-    // ** END AUTH POSTS **
-    // * AUTH PROFILE **
-    // Initiate a follow to specific user from the logged in user
-    Route::post('/profile/{user:name}/follow', 'FollowsController@store');
-    Route::delete('/profile/{user:name}/unfollow', 'FollowsController@destroy');
-    // ** END AUTH PROFILE **
+    Route::post('/profile/{user:username}/follow', 'FollowsController@store');
+    Route::delete('/profile/{user:username}/unfollow', 'FollowsController@destroy');
+    Route::get('/profile/{user:username}/edit', 'ProfilesController@edit');
+    Route::put('/profile/{user:username}', 'ProfilesController@update');
+    Route::get('/explore', 'ExploreController@index');
 });
 
-// ** NON AUTH PROFILE ROUTES **
-Route::get('/profile/{user:name}', 'ProfilesController@show')->name('show');
-// ** END NON AUTH PROFILE **
-// Auth Routes 
+Route::get('/profile/{user:username}', 'ProfilesController@show')->name('show');
+
 Auth::routes();
 
