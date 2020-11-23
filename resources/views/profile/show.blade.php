@@ -16,8 +16,13 @@
         </div>
         <div class="flex justify-between items-center mb-6">
             <div>
-                <h2 class="font-bold text-2xl mb-2">{{ $user->name }}</h2>
-                <p class="font-thin text-gray-600">Joined {{\Carbon\Carbon::parse($user->created_at)->format('F Y')}}</p>
+                <h2 class="font-bold text-2xl">{{ $user->name }}</h2>
+                <h3 class="font-thin text-gray-600 -mt-1">{{ '@' . $user->username }}</h3>
+                <div class="flex">
+                    <!-- Location will need to be made dynamic after schema is updated -->
+                    <p class="font-thin text-gray-600"><i class="fas fa-map-marker-alt mr-2"></i>Syracuse, NY</p>
+                    <p class="font-thin text-gray-600 ml-4"><i class="far fa-calendar-alt mr-2"></i>Joined {{\Carbon\Carbon::parse($user->created_at)->format('F Y')}}</p>
+                </div>
             </div>
             @if(auth()->user()->name !== $user->name)
             <div class="flex">
