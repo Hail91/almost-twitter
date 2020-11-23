@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'name', 'email', 'password',
+        'username', 'name', 'email', 'password', 'avatar'
     ];
 
     /**
@@ -38,8 +38,8 @@ class User extends Authenticatable
     ];
 
     // Getter
-    public function getAvatarAttribute() {
-        return "https://i.pravatar.cc/200?u=" . $this->email;
+    public function getAvatarAttribute($value) {
+        return asset('storage/' . $value);
     }
     // Retrieve Timeline for the current user
     public function timeline() {

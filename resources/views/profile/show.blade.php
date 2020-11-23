@@ -10,7 +10,7 @@
                 src="{{ $user->avatar }}"
                 alt="Hello"
                 class="rounded-full mr-2 absolute bottom-0 transform translate-x-1/2 translate-y-1/2"
-                style="left: 30%"
+                style="left: 30%; height: 9rem"
                 width="150"
             >
         </div>
