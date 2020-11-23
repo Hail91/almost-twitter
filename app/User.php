@@ -79,4 +79,11 @@ class User extends Authenticatable
         // Find the user we are following and detach the relationship (detach)
         return $this->follows()->detach($user);
     }
+    // Path method to specify where we want to direct to on User
+    public function path($append = '') {
+        // Default path to user's profile
+        $path = route('show', $this->name);
+        // If an append argument is received, return the path with the append added, otherwise, return the default path.
+        return $append ? "{$path}/${append}" : $path;
+    }
 }
