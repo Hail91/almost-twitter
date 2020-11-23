@@ -20,13 +20,13 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function() {
     Route::get('/posts', 'PostsController@index')->name('home');
     Route::post('/posts', 'PostsController@store');
-    Route::post('/profile/{user:name}/follow', 'FollowsController@store');
-    Route::delete('/profile/{user:name}/unfollow', 'FollowsController@destroy');
-    Route::get('/profile/{user:name}/edit', 'ProfilesController@edit');
+    Route::post('/profile/{user:username}/follow', 'FollowsController@store');
+    Route::delete('/profile/{user:username}/unfollow', 'FollowsController@destroy');
+    Route::get('/profile/{user:username}/edit', 'ProfilesController@edit');
 });
 
 // ** NON AUTH PROFILE ROUTES **
-Route::get('/profile/{user:name}', 'ProfilesController@show')->name('show');
+Route::get('/profile/{user:username}', 'ProfilesController@show')->name('show');
 // ** END NON AUTH PROFILE **
 // Auth Routes
 Auth::routes();

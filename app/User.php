@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'name', 'email', 'password',
     ];
 
     /**
@@ -82,7 +82,7 @@ class User extends Authenticatable
     // Path method to specify where we want to direct to on User
     public function path($append = '') {
         // Default path to user's profile
-        $path = route('show', $this->name);
+        $path = route('show', $this->username);
         // If an append argument is received, return the path with the append added, otherwise, return the default path.
         return $append ? "{$path}/${append}" : $path;
     }
