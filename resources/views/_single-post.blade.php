@@ -31,9 +31,15 @@
             </div>
         </h5>
         <p class="text-sm">{{ $post->body }}</p>
-        <i class="far fa-comments mt-4 font-thin text-gray-600 cursor-pointer mr-8 hover:text-blue-500"></i>
-        <i class="far fa-edit mt-4 font-thin text-gray-600 cursor-pointer mr-8 hover:text-blue-500"></i>
-        <i class="far fa-heart mt-4 font-thin text-gray-600 cursor-pointer mr-8 hover:text-blue-500"></i>
-        <i class="far fa-trash-alt mt-4 font-thin text-gray-600 cursor-pointer mr-8 hover:text-red-500"></i>
+        <div class="flex">
+            <i class="far fa-comments mt-4 font-thin text-gray-600 cursor-pointer mr-8 hover:text-blue-500"></i>
+            <i class="far fa-edit mt-4 font-thin text-gray-600 cursor-pointer mr-8 hover:text-blue-500"></i>
+            <form action="/posts/{{ $post->id }}/like" method="POST">
+                @csrf
+                <button type="submit"><i class="far fa-heart mt-4 font-thin text-gray-600 cursor-pointer mr-8 hover:text-blue-500"></i></button>
+                <span>{{ $post->likes ?: 0 }}</span>
+            </form>
+            <i class="far fa-trash-alt mt-4 font-thin text-gray-600 cursor-pointer mr-8 hover:text-red-500"></i>
+        </div>
     </div>
 </div>

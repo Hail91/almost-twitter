@@ -48,6 +48,7 @@ class User extends Authenticatable
        $ids->push($this->id);
        // And the posts from the people that he/she follows
        return Post::whereIn('user_id', $ids)
+       ->withLikes()
        ->latest()
        ->paginate(10);
     }

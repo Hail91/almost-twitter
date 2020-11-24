@@ -25,6 +25,8 @@ Route::middleware('auth')->group(function() {
     Route::get('/profile/{user:username}/edit', 'ProfilesController@edit');
     Route::put('/profile/{user:username}', 'ProfilesController@update');
     Route::get('/explore', 'ExploreController@index');
+    Route::post('/posts/{post}/like', 'PostLikesController@store');
+    Route::delete('/posts/{post}/like', 'PostLikesController@destroy');
 });
 
 Route::get('/profile/{user:username}', 'ProfilesController@show')->name('show');

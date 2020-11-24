@@ -12,7 +12,7 @@ class ProfilesController extends Controller
     public function show(User $user) {
         return view('profile.show', [
             'user' => $user,
-            'posts' => $user->posts()->paginate(10)
+            'posts' => $user->posts()->withLikes()->paginate(10)
         ]);
     }
     // Edit Profile Page

@@ -16,12 +16,13 @@ class CreateLikesTable extends Migration
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
             // Need ID of the 'liking' user
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             // Post in question (the post that was liked)
-            $table->foreignId('post_id');
+            $table->foreignId('post_id')->constrained()->onDelete('cascade');;
             // Data to determine whether a post is liked (0) or disliked (1)
             $table->boolean('liked');
             $table->timestamps();
+            $table->unique(['user_id', 'post_id'])
         });
     }
 
