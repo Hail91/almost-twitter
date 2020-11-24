@@ -15,7 +15,7 @@
             >
         </div>
         <div class="flex justify-between items-center mb-6">
-            <div>
+            <div style="max-width: 400px">
                 <h2 class="font-bold text-2xl">{{ $user->name }}</h2>
                 <h3 class="font-thin text-gray-600 -mt-1">{{ '@' . $user->username }}</h3>
                 <div class="flex">
@@ -56,6 +56,6 @@
     convallis aenean et tortor.</p>
 </header>
 @include('_timeline', [
-    'posts' => $user->posts
+    'posts' => $posts
 ])
 @endcomponent

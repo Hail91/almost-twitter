@@ -10,7 +10,10 @@ class ProfilesController extends Controller
 {
     // Display Profile page when requested
     public function show(User $user) {
-        return view('profile.show', compact('user'));
+        return view('profile.show', [
+            'user' => $user,
+            'posts' => $user->posts()->paginate(10)
+        ]);
     }
     // Edit Profile Page
     public function edit(User $user) {

@@ -49,7 +49,7 @@ class User extends Authenticatable
        // And the posts from the people that he/she follows
        return Post::whereIn('user_id', $ids)
        ->latest()
-       ->get();
+       ->paginate(10);
     }
     public function posts() {
         return $this->hasMany(Post::class)->latest();
