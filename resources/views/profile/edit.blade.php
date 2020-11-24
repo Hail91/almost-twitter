@@ -8,7 +8,7 @@
             >
                 Name
             </label>
-            <input class="border border-gray-400 p-2 w-full"
+            <input class="focus:outline-none focus:border-blue-500 border border-gray-400 p-2 w-full"
                 type="text"
                 value="{{ $user->name }}"
                 name="name"
@@ -24,7 +24,7 @@
             >
                 Username
             </label>
-            <input class="border border-gray-400 p-2 w-full"
+            <input class="focus:outline-none focus:border-blue-500 border border-gray-400 p-2 w-full"
                 type="text"
                 value="{{ $user->username }}"
                 name="username"
@@ -41,7 +41,7 @@
                     Avatar
             </label>
             <div class="flex">
-                <input class="border border-gray-400 p-2 w-full"
+                <input class="focus:outline-none focus:border-blue-500 border border-gray-400 p-2 w-full"
                     type="file"
                     name="avatar"
                     id="avatar"
@@ -63,7 +63,7 @@
             >
                 Email
             </label>
-            <input class="border border-gray-400 p-2 w-full"
+            <input class="focus:outline-none border focus:border-blue-500 border-gray-400 p-2 w-full"
                 type="email"
                 value="{{ $user->email }}"
                 name="email"
@@ -79,7 +79,7 @@
             >
                 Password
             </label>
-            <input class="border border-gray-400 p-2 w-full"
+            <input class="focus:outline-none focus:border-blue-500 border border-gray-400 p-2 w-full"
                 type="password"
                 name="password"
                 id="password"
@@ -95,7 +95,7 @@
             >
                 Confirm Password
             </label>
-            <input class="border border-gray-400 p-2 w-full"
+            <input class="focus:outline-none focus:border-blue-500 border border-gray-400 p-2 w-full"
                 type="password"
                 name="password_confirmation"
                 id="password_confirmation"

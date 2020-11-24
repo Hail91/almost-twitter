@@ -5,7 +5,6 @@
             name="body"
             class="w-full outline-none"
             placeholder="What's going on today?"
-            autofocus
         >
         </textarea>
         <hr class="my-4">
@@ -18,7 +17,7 @@
                 height="50"
                 style="height: 3.3rem"
             >
-            <button class="transition duration-300 ease-in-out bg-blue-400 hover:bg-blue-500 rounded-full shadow h-10 py-2 px-2 text-white" type="submit">Create a Post</button>
+            <button class="focus:outline-none transition duration-300 ease-in-out bg-blue-400 hover:bg-blue-500 rounded-full shadow h-10 py-2 px-2 text-white" type="submit">Create a Post</button>
         </footer>
     </form>
     @error('body')
