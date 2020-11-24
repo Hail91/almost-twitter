@@ -5,10 +5,11 @@
             name="body"
             class="w-full outline-none"
             placeholder="What's going on today?"
+            autofocus
         >
         </textarea>
         <hr class="my-4">
-        <footer class="flex justify-between">
+        <footer class="flex justify-between items-center">
             <img
                 src="{{ auth()->user()->avatar }}"
                 alt="avatar-of-friend-in-list"

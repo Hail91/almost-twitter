@@ -4,4 +4,6 @@
         @empty
             <p class="p-4">No posts yet!</p>
     @endforelse
+
+    {{ $posts->links() }}
 </div>
