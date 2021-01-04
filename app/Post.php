@@ -11,7 +11,7 @@ class Post extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
-
+    // Switch from Boolean implementation to track number of 'total' likes/dislikes since we may have multiple users liking/disliking posts
     public function like($user = null, $liked = true) {
         $this->likes()->updateOrCreate([
             'user_id' => $user ? $user->id : auth()->id(),
@@ -19,7 +19,7 @@ class Post extends Model
             'liked' => $liked
         ]);
     }
-
+    // Switch from Bool to track total number of dislikes
     public function dislike($user = null) {
         return $this->like($user, false);
     }
