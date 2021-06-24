@@ -2,8 +2,9 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
@@ -90,5 +91,15 @@ class User extends Authenticatable
     // Method to hash password when user updates their profile password
     public function setPasswordAttribute($value) {
         $this->attributes['password'] = bcrypt($value);
+    }
+    // Logout method
+    public function userLogout(Request $request) {
+        Auth::logout();
+        // Invalidate the session
+        $request->session()->invalidate();
+        // Regenerate CSRF token
+        $request->session()->regenerateToken();
+        // Redirect to Login page
+        return redirect('/login');
     }
 }
