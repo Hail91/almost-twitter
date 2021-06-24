@@ -18,15 +18,23 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->group(function() {
+    // Post Routes
     Route::get('/posts', 'PostsController@index')->name('home');
     Route::post('/posts', 'PostsController@store');
+
+    // Profile Routes
     Route::post('/profile/{user:username}/follow', 'FollowsController@store');
     Route::delete('/profile/{user:username}/unfollow', 'FollowsController@destroy');
     Route::get('/profile/{user:username}/edit', 'ProfilesController@edit');
     Route::put('/profile/{user:username}', 'ProfilesController@update');
     Route::get('/explore', 'ExploreController@index');
+
+    // Likes Routes
     Route::post('/posts/{post}/like', 'PostLikesController@store');
     Route::delete('/posts/{post}/like', 'PostLikesController@destroy');
+
+    // User Routes
+    Route::get('/logout', 'UserController@userLogout')->name('logout');
 });
 
 Route::get('/profile/{user:username}', 'ProfilesController@show')->name('show');
