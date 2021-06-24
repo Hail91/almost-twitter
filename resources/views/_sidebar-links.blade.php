@@ -42,6 +42,12 @@
         </a>
     </li>
     <li>
+        <a class="transition duration-200 ease-in-out hover:text-blue-500 font-bold text-lg mb-4 block" href="{{ route('logout') }}">
+            <i style="margin-right: 0.35rem" class="fas fa-sign-out-alt"></i>
+            Logout
+        </a>
+    </li>
+    <li>
         <a class="transition duration-200 ease-in-out hover:text-blue-500 font-bold text-lg mb-4 block" href="#">
             <i class="fas fa-arrow-right mr-1"></i>
             More

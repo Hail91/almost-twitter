@@ -92,14 +92,4 @@ class User extends Authenticatable
     public function setPasswordAttribute($value) {
         $this->attributes['password'] = bcrypt($value);
     }
-    // Logout method
-    public function userLogout(Request $request) {
-        Auth::logout();
-        // Invalidate the session
-        $request->session()->invalidate();
-        // Regenerate CSRF token
-        $request->session()->regenerateToken();
-        // Redirect to Login page
-        return redirect('/login');
-    }
 }
