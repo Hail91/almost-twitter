@@ -26,7 +26,7 @@ class PostsController extends Controller {
         return redirect(route('home'));
     }
 
-    public function destroy(int $post_id) {
+    public function destroy(int $post_id) : RedirectResponse {
         $post_to_delete = Post::find($post_id);
         try {
             $post_to_delete->delete();
@@ -36,5 +36,10 @@ class PostsController extends Controller {
             Log::error($error->getMessage());
             return redirect(route('home'))->with('post_delete_error', 1);
         }
+    }
+
+    public function edit(int $post_id) : void {
+        // ** TODO **
+        return;
     }
 }

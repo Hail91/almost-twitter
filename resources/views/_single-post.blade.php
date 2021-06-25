@@ -37,18 +37,21 @@
             <form action="/posts/{{ $post->id }}/like" method="POST">
                 @csrf
                 <button class="focus:outline-none" type="submit"><i class="focus:outline-none far fa-heart mt-4 font-thin text-gray-600 cursor-pointer hover:text-blue-500"></i></button>
-                <span class="ml-1 mr-8 {{ $post->likes ? 'text-blue-500' : 'text-gray-600' }}">{{ $post->likes ?: 0 }}</span>
+                <span class="ml-1 mr-8 {{ $post->likes ? 'text-blue-500' : 'text-gray-600' }}">{{ $post->likes == 1 ? $post->likes : 0 }}</span>
             </form>
             <!-- Need to icon dislike icon and associated logic here -->
             <form action="/posts/{{ $post->id }}/like" method="POST">
                 @csrf
                 @method('DELETE')
                 <button class="focus:outline-none" type="submit"><i class="focus:outline-none far fa-thumbs-down mt-4 font-thin text-gray-600 cursor-pointer hover:text-red-500"></i></button>
-                <span class="ml-1 mr-8 {{ $post->likes ? 'text-gray-600' : 'text-red-600' }}">{{ $post->likes == 0 ? 1 : 0 }}</span>
+                <!-- ** Add dislikes to posts and then correct this annoying issue ** -->
+                <span class="ml-1 mr-8 {{ $post->likes ? 'text-red-600' : 'text-gray-600' }}">{{ $post->likes !== 0 ? 0 : 1 }}</span>
             </form>
-            <a>
-                <i class="focus:outline-none far fa-trash-alt mt-4 font-thin text-gray-600 cursor-pointer mr-8 hover:text-red-500"></i>
-            </a>
+            <form action="{{ route('destroy_post', $post->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button class="focus:outline-none" type="submit"><i class="focus:outline-none far fa-trash-alt mt-4 font-thin text-gray-600 cursor-pointer mr-8 hover:text-red-500"></i></button>
+            </form>
         </div>
     </div>
 </div>
