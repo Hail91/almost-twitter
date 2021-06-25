@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +22,8 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function() {
     // Post Routes
     Route::get('/posts', 'PostsController@index')->name('home');
-    Route::post('/posts', 'PostsController@store');
+    Route::post('/posts', 'PostsController@store')->name('create_post');
+    Route::delete('/posts/{id}', 'PostsController@destroy')->name('destroy_post');
 
     // Profile Routes
     Route::post('/profile/{user:username}/follow', 'FollowsController@store');
@@ -39,5 +42,6 @@ Route::middleware('auth')->group(function() {
 
 Route::get('/profile/{user:username}', 'ProfilesController@show')->name('show');
 
+// Authentication routes (Register/Login etc...)
 Auth::routes();
 
